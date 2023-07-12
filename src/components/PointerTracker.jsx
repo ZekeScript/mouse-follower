@@ -11,7 +11,7 @@ export const PointerTracker = () => {
 
     isTracking && window.addEventListener('pointermove', handleMove)
 
-    //cleanup
+    // cleanup
     return () => {
       window.removeEventListener('pointermove', handleMove)
     }
@@ -30,7 +30,7 @@ export const PointerTracker = () => {
           top: -20,
           width: 40,
           height: 40,
-          transform: `translate(${position.x}px, ${position.y}px)`,
+          transform: `translate(${position.x}px, ${position.y}px)`
         }}
       />
       <button onClick={() => setIsTracking(!isTracking)}>

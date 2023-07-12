@@ -1,6 +1,6 @@
 import { PointerTracker } from './components/PointerTracker'
 
-function App() {
+function App () {
   return (
     <main>
       <PointerTracker />
