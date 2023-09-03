@@ -1,21 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { usePointerTracker } from '../hooks/usePointerTracker'
 
 export const PointerTracker = () => {
   const [isTracking, setIsTracking] = useState(false)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const { position } = usePointerTracker({ isTracking })
 
-  useEffect(() => {
-    const handleMove = ({ clientX, clientY }) => {
-      setPosition({ x: clientX, y: clientY })
-    }
-
-    isTracking && window.addEventListener('pointermove', handleMove)
-
-    // cleanup
-    return () => {
-      window.removeEventListener('pointermove', handleMove)
-    }
-  }, [isTracking])
+  const handleClick = async () => {
+    setIsTracking(!isTracking)
+  }
 
   return (
     <>
@@ -33,7 +25,8 @@ export const PointerTracker = () => {
           transform: `translate(${position.x}px, ${position.y}px)`
         }}
       />
-      <button onClick={() => setIsTracking(!isTracking)}>
+
+      <button onClick={handleClick}>
         {isTracking ? 'Disable' : 'Enable'} tracker
       </button>
     </>
