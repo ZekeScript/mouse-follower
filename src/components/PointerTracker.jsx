@@ -12,6 +12,7 @@ export const PointerTracker = () => {
   return (
     <>
       <div
+        id='tracker'
         style={{
           position: 'absolute',
           border: '1px solid',
